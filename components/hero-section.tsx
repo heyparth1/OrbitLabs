@@ -29,8 +29,7 @@ export function HeroSection() {
           </h1>
           
           <p className="mt-6 text-pretty text-lg leading-relaxed text-white/70 sm:text-xl">
-            Orbital Labs is a 3-person AI engineering studio. We help startups ship production-ready 
-            AI agents that handle real workflows, not just demos.
+            Orbital Labs studies workflows and builds innovative, production-ready AI agents that reduce real-world friction.
           </p>
           
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
