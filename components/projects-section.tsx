@@ -30,21 +30,21 @@ const projects = [
     client: "Security Operations",
     description: "Built an AI-driven SecOps assistant that processes user inputs, recognizes intent, and automates the Direct Internet Access (DIA) issue workflow, interacting via a Webex Bot and integrating with ServiceNow to provide real-time insights and faster incident resolution.",
     tags: ["Cisco", "AI Automation", "Python", "AWS Bedrock", "ServiceNow"],
-    demoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+
   },
   {
     title: "Customer Support Agent",
     client: "E-commerce Platform",
     description: "Deployed an AI agent that handles 80% of support tickets autonomously, escalating complex issues to humans with full context.",
     tags: ["OpenAI", "Fine-tuning", "Redis", "Next.js"],
-    demoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+
   },
   {
     title: "Code Review Bot",
     client: "Developer Tools Startup",
     description: "Built a GitHub-integrated agent that reviews PRs, suggests improvements, and catches bugs before they hit production.",
     tags: ["GPT-4", "GitHub API", "TypeScript", "Webhooks"],
-    demoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+
   },
 ]
 
@@ -87,28 +87,30 @@ export function ProjectsSection() {
                 </div>
               </CardContent>
               <div className="mt-auto p-6 pt-0">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" className="w-full gap-2">
-                      <Play className="h-4 w-4" />
-                      Watch Demo
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[800px]">
-                    <DialogHeader>
-                      <DialogTitle>{project.title} Demo</DialogTitle>
-                    </DialogHeader>
-                    <div className="aspect-video w-full overflow-hidden rounded-lg">
-                      <iframe
-                        className="h-full w-full"
-                        src={project.demoUrl}
-                        title={`${project.title} Demo`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                {project.demoUrl && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full gap-2">
+                        <Play className="h-4 w-4" />
+                        Watch Demo
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[800px]">
+                      <DialogHeader>
+                        <DialogTitle>{project.title} Demo</DialogTitle>
+                      </DialogHeader>
+                      <div className="aspect-video w-full overflow-hidden rounded-lg">
+                        <iframe
+                          className="h-full w-full"
+                          src={project.demoUrl}
+                          title={`${project.title} Demo`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </div>
             </Card>
           ))}
