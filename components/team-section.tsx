@@ -1,31 +1,36 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const team = [
   {
-    name: "Alex Chen",
-    role: "Founder & Lead Engineer",
-    bio: "Former ML engineer at Stripe. Built AI systems that processed millions of transactions. Obsessed with making AI reliable in production.",
-    strengths: ["System Architecture", "LLM Fine-tuning", "Scaling"],
+    name: "Ansh Agrawal",
+    role: "Founder",
+    bio: "Helped a client scale operations by building automations for lead generation and CRM, reducing manual work by 80%.",
+    strengths: ["Workflow Automation", "n8n", "CRM Automation", "Lead Generation", "Process Optimization"],
   },
   {
-    name: "Jordan Rivera",
-    role: "Senior AI Engineer",
-    bio: "Ex-Google, worked on conversational AI. Brings deep expertise in NLP, prompt engineering, and building AI that actually understands users.",
-    strengths: ["NLP", "Prompt Engineering", "User Research"],
+    name: "Faizan",
+    role: "Co-Founder | AI Engineer",
+    bio: "Worked on full-stack AI products, combining LLMs with scalable backends to ship fast, user-focused solutions across multiple domains.",
+    strengths: ["LLMs", "Full-Stack", "AI Product Engineering", "APIs", "Scalable Systems"],
   },
   {
-    name: "Sam Patel",
-    role: "Full-Stack AI Engineer",
-    bio: "YC founder background. Knows what startups need: speed, iteration, and pragmatic solutions. Ships fast without cutting corners.",
-    strengths: ["Full-Stack", "DevOps", "Rapid Prototyping"],
+    name: "Dhruv",
+    role: "Co-Founder | AI Engineer",
+    bio: "Built AI-driven agents and RAG-based systems for enterprise workflows, focusing on reliability, system design, and production-ready deployments.",
+    strengths: ["AI Agents", "RAG", "System Design", "Backend Engineering", "Production AI"],
   },
 ]
 
 export function TeamSection() {
+  const { ref, isVisible } = useScrollReveal()
+
   return (
-    <section id="team" className="py-24 lg:py-32">
+    <section ref={ref as any} id="team" className="py-24 bg-muted/30 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className={`mx-auto max-w-2xl text-center transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Meet the Team
           </h2>
@@ -34,7 +39,8 @@ export function TeamSection() {
           </p>
         </div>
         
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className={`mx-auto mt-16 max-w-5xl transition-all duration-700 delay-200 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {team.map((member) => (
             <Card 
               key={member.name} 
@@ -82,6 +88,7 @@ export function TeamSection() {
               </CardContent>
             </Card>
           ))}
+          </div>
         </div>
       </div>
     </section>

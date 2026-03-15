@@ -1,48 +1,53 @@
-import { Phone, FileText, Code, Rocket } from "lucide-react"
+"use client"
+
+import { Phone, FileText, Code, Rocket, ClipboardCheck, Wrench } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const steps = [
   {
     number: "01",
-    icon: Phone,
-    title: "Discovery Call",
-    description: "We dive deep into your workflow, users, and goals. No sales pitch—just understanding your problem.",
+    title: "Discovery & Scoping",
+    description: "We analyze your workflows to identify high-value opportunities where AI can eliminate friction. We define clear success metrics.",
+    icon: FileText,
   },
   {
     number: "02",
-    icon: FileText,
-    title: "Architecture & Proposal",
-    description: "We design the AI system and present a clear scope, timeline, and budget. No surprises.",
+    title: "Architecture & Proof of Concept",
+    description: "We build a focused prototype to validate our approach with real data, proving feasibility before deep investment.",
+    icon: Code,
   },
   {
     number: "03",
-    icon: Code,
-    title: "Build & Iterate",
-    description: "Weekly demos, tight feedback loops. You see progress every step of the way.",
+    title: "Production Engineering",
+    description: "We harden the system. This means robust error handling, monitoring, fallback models, and seamless integration.",
+    icon: Wrench,
   },
   {
     number: "04",
+    title: "Handoff & Support",
+    description: "We deploy the agent into your infrastructure, provide full documentation, and offer ongoing support to ensure it scales.",
     icon: Rocket,
-    title: "Launch & Support",
-    description: "We deploy to production, monitor performance, and stick around to ensure success.",
   },
 ]
 
 export function HowItWorksSection() {
+  const { ref, isVisible } = useScrollReveal()
+
   return (
-    <section id="process" className="py-24 lg:py-32 bg-secondary/30">
+    <section ref={ref as any} id="process" className="py-24 lg:py-32 bg-secondary/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className={`mx-auto max-w-2xl text-center transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             How We Work
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A proven process that gets you from idea to production in weeks, not months.
+          <p className="mt-4 text-lg text-pretty text-muted-foreground">
+            A fast, structured process designed to get your AI features into production quickly and reliably.
           </p>
         </div>
         
-        <div className="mx-auto mt-16 max-w-4xl">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className={`mx-auto mt-16 max-w-4xl transition-all duration-700 delay-200 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {steps.map((step, index) => (
               <Card 
                 key={step.number}
@@ -64,12 +69,6 @@ export function HowItWorksSection() {
                           className="diagram-extrusion h-6 w-6 text-primary transition-all duration-200 ease-out group-hover:scale-[1.05] group-hover:opacity-100" 
                         />
                       </div>
-                      <div 
-                        className="absolute -top-0.5 left-0.5 right-0.5 h-0.5 rounded-t-lg opacity-25 transition-opacity duration-200 group-hover:opacity-30"
-                        style={{
-                          background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent)',
-                        }}
-                      />
                     </div>
                     <span className="font-mono text-2xl font-bold text-primary/30">
                       {step.number}

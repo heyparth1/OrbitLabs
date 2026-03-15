@@ -116,6 +116,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border outline-ring/50;
   }
@@ -144,5 +147,32 @@
   .service-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  @keyframes slide-through-high {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-slide-through {
+    animation: slide-through-high 60s linear infinite;
+    /* Optional: Pause on hover */
+    /* animation-play-state: paused; */ 
+    white-space: nowrap;
+  }
+
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

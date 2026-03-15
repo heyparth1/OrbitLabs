@@ -5,9 +5,9 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
+  { href: "#projects", label: "Projects" },
   { href: "#problems", label: "Problems" },
   { href: "#process", label: "Process" },
-  { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
   { href: "#team", label: "Team" },
 ]
@@ -38,7 +38,7 @@ export function Navigation() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-secondary/50"
             >
               {link.label}
             </a>

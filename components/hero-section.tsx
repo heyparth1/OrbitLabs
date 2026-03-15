@@ -15,38 +15,44 @@ export function HeroSection() {
       
       <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-2 text-sm text-muted-foreground">
+          <div 
+            className="mb-8 inline-flex cursor-default items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary/20 animate-fade-in-up"
+          >
             <Sparkles className="h-4 w-4 text-primary" />
             <span>AI Engineering for Startups</span>
           </div>
           
-          <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+          <h1 
+            className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl animate-fade-in-up"
+            style={{ animationDelay: '150ms' }}
+          >
             We Build AI Agents That{" "}
             <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
               Actually Work
             </span>
-
           </h1>
           
-          <p className="mt-6 text-pretty text-lg leading-relaxed text-white/70 sm:text-xl">
-            Orbital Labs studies workflows and builds innovative, production-ready AI agents that reduce real-world friction.
+          <p 
+            className="mt-6 text-pretty text-lg leading-relaxed text-white/70 sm:text-xl animate-fade-in-up"
+            style={{ animationDelay: '300ms' }}
+          >
+            We build production-ready AI agents that eliminate friction from your workflows.
           </p>
           
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" asChild>
-              <a href="#contact" className="gap-2">
+          <div 
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in-up"
+            style={{ animationDelay: '450ms' }}
+          >
+            <Button size="lg" className="group rounded-full" asChild>
+              <a href="#contact" className="inline-flex items-center gap-2">
                 Start a Conversation
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="rounded-full bg-background/50 backdrop-blur-sm" asChild>
               <a href="#projects">See Our Work</a>
             </Button>
           </div>
-          
-          <p className="mt-8 text-sm text-muted-foreground">
-            Trusted by early-stage and growth-stage startups
-          </p>
         </div>
       </div>
     </section>

@@ -1,48 +1,65 @@
+"use client"
+
 import { AlertCircle, Clock, Code2, Puzzle, Users } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const problems = [
   {
-    icon: AlertCircle,
     title: "AI That Breaks in Production",
-    description: "Your prototype works great in demos, but falls apart with real user input and edge cases.",
+    icon: AlertCircle,
+    color: "text-red-500",
+    description: "Prototypes work in demos but fail with real users.",
   },
   {
-    icon: Puzzle,
     title: "Integration Nightmares",
-    description: "Connecting LLMs to your existing systems feels like duct-taping different universes together.",
+    icon: Puzzle,
+    color: "text-amber-500",
+    description: "Connecting LLMs to existing systems feels impossible.",
   },
   {
-    icon: Clock,
     title: "Slow Iteration Cycles",
-    description: "Every prompt change requires a deploy. Testing is manual. Debugging feels impossible.",
+    icon: Clock,
+    color: "text-blue-500",
+    description: "Every prompt change requires a manual deploy and test.",
   },
   {
-    icon: Users,
     title: "No AI Expertise In-House",
-    description: "Your team is great at building product, but AI engineering requires a different skill set.",
+    icon: Users,
+    color: "text-purple-500",
+    description: "Great product teams lack specialized AI engineering skills.",
   },
   {
-    icon: Code2,
     title: "Scaling Concerns",
-    description: "What works for 100 users crashes at 10,000. Costs spiral. Latency kills user experience.",
+    icon: Code2,
+    color: "text-emerald-500",
+    description: "Costs spiral and latency spikes at production volume.",
+  },
+  {
+    title: "Security Risks",
+    icon: AlertCircle,
+    color: "text-rose-500",
+    description: "Fear of leaking proprietary data or hallucinating bad answers.",
   },
 ]
 
 export function ProblemsSection() {
+  const { ref, isVisible } = useScrollReveal()
+
   return (
-    <section id="problems" className="py-24 lg:py-32">
+    <section ref={ref as any} id="problems" className="py-24 bg-muted/30 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className={`mx-auto max-w-2xl text-center transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Sound Familiar?
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-pretty text-muted-foreground">
             These are the problems we solve every day for startups like yours.
           </p>
         </div>
         
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={`mx-auto mt-16 max-w-5xl transition-all duration-700 delay-200 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((problem, index) => (
             <Card 
               key={problem.title} 
@@ -83,6 +100,7 @@ export function ProblemsSection() {
               </CardContent>
             </Card>
           ))}
+          </div>
         </div>
       </div>
     </section>

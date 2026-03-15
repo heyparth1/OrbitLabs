@@ -16,9 +16,9 @@ export function ContactSection() {
           
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild>
-              <a href="mailto:hello@orbitallabs.ai" className="gap-2">
+              <a href="mailto:reach.orbitallabs@gmail.com" className="gap-2">
                 <Mail className="h-4 w-4" />
-                hello@orbitallabs.ai
+                reach.orbitallabs@gmail.com
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>

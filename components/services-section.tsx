@@ -1,5 +1,8 @@
+"use client"
+
 import { Rocket, Wrench, GraduationCap, LifeBuoy } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 
 const services = [
   {
@@ -29,19 +32,22 @@ const services = [
 ]
 
 export function ServicesSection() {
+  const { ref, isVisible } = useScrollReveal()
+
   return (
-    <section id="services" className="py-24 lg:py-32">
+    <section ref={ref as any} id="services" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className={`mx-auto max-w-2xl text-center transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            How We Can Help
+            Our Expertise Can Help
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Flexible engagement models to fit your stage and needs.
+          <p className="mt-4 text-lg text-pretty text-muted-foreground">
+            We deliver production-ready AI systems that solve real business challenges without the prototyping pitfalls.
           </p>
         </div>
         
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className={`mx-auto mt-16 max-w-5xl transition-all duration-700 delay-200 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service) => (
             <Card 
               key={service.title} 
@@ -76,17 +82,10 @@ export function ServicesSection() {
                 <CardDescription className="text-[0.9375rem] leading-relaxed text-muted-foreground/90">
                   {service.description}
                 </CardDescription>
-                <ul className="grid grid-cols-2 gap-2.5 text-sm">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-muted-foreground/85">
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                      <span className="leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </CardContent>
             </Card>
           ))}
+          </div>
         </div>
       </div>
     </section>
